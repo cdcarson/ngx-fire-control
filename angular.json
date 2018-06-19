@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-fire-control": {
+    "ngx-fire-control-demo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-fire-control",
+            "outputPath": "dist/ngx-fire-control-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-fire-control:build"
+            "browserTarget": "ngx-fire-control-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-fire-control:build:production"
+              "browserTarget": "ngx-fire-control-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-fire-control:build"
+            "browserTarget": "ngx-fire-control-demo:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "ngx-fire-control-e2e": {
+    "ngx-fire-control-demo-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-fire-control:serve"
+            "devServerTarget": "ngx-fire-control-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-fire-control:serve:production"
+              "devServerTarget": "ngx-fire-control-demo:serve:production"
             }
           }
         },
@@ -121,7 +121,47 @@
           }
         }
       }
+    },
+    "ngx-fire-control": {
+      "root": "projects/ngx-fire-control",
+      "sourceRoot": "projects/ngx-fire-control/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-fire-control/tsconfig.lib.json",
+            "project": "projects/ngx-fire-control/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-fire-control/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-fire-control/src/test.ts",
+            "tsConfig": "projects/ngx-fire-control/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-fire-control/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-fire-control/tsconfig.lib.json",
+              "projects/ngx-fire-control/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "ngx-fire-control"
+  "defaultProject": "ngx-fire-control-demo"
 }
