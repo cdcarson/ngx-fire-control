@@ -76,6 +76,14 @@ describe('NgxFireControlDirective', () => {
   });
 
   describe('control changes', () => {
+    it('should bail if the control value is not defined', fakeAsync(() => {
+      const directive = new NgxFireControlDirective(model, afDb, elementRef, 500);
+      directive.ngOnInit();
+      control.setValue(undefined);
+      tick(500);
+      expect((directive as any).control).toBe(control);
+      expect(afDbObject.set).not.toHaveBeenCalledWith(undefined);
+    }));
     it('should update the database when the control changes', fakeAsync(() => {
       const directive = new NgxFireControlDirective(model, afDb, elementRef, 500);
       directive.ngOnInit();

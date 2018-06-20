@@ -1,0 +1,9 @@
+<div class="form-group">
+  <label>Condiments</label>
+  <app-firebase-control-status class="ml-3" [status$]="ctl.status$"></app-firebase-control-status>
+  <app-array-of-strings-control
+    [(ngModel)]="c"
+    [options]="condiments"
+    [ngxFireControl]="'ngx-fire-control-demo/' + uid + '/condiments'"
+    #ctl="ngxFireControl"></app-array-of-strings-control>
+</div>

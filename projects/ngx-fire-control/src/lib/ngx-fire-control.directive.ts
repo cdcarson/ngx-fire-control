@@ -33,7 +33,7 @@ export class NgxFireControlDirective implements OnInit, OnDestroy {
     return this.error$$.value;
   }
 
-  @Input() appNgxFirebaseControl: Reference | string;
+  @Input() ngxFireControl: Reference | string;
   @Input() debounce: any;
   @Input() trim: any;
 
@@ -50,12 +50,15 @@ export class NgxFireControlDirective implements OnInit, OnDestroy {
       this.debounce = this.getDefaultDebounceForElement(this.elementRef.nativeElement);
     }
     this.control = this.model.control;
-    this.object = this.afDb.object(this.appNgxFirebaseControl);
+    this.object = this.afDb.object(this.ngxFireControl);
 
     this.control.valueChanges
       .pipe(debounceTime(this.debounce))
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((val) => {
+        if ( undefined === val ) {
+          return;
+        }
         this.error$$.next(null);
         if (this.control.invalid) {
           this.status$$.next(NgxFireControlStatus.INVALID);

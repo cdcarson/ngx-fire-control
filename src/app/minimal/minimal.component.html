@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label for="minimal-reactive-control">Name (using a <code>FormControl</code>)</label>
+  <app-firebase-control-status class="ml-3" [status$]="ctl.status$"></app-firebase-control-status>
+  <input
+    id="minimal-reactive-control"
+    type="text"
+    class="form-control"
+    [formControl]="fc"
+    [ngxFireControl]="baseRef.child('name')"
+    #ctl="ngxFireControl">
+  <div class="invalid-feedback" style="display:block" *ngIf="fc.hasError('required') && fc.dirty">
+    Required.
+  </div>
+</div>

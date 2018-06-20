@@ -1,0 +1,22 @@
+<small *ngIf="status" class="text-muted">
+  <span *ngIf="status==='INITIALIZING'">
+    <i class="fas fa-fw fa-spinner fa-spin"></i> <small>Initializing...</small>
+  </span>
+
+  <span *ngIf="status==='SAVED'">
+    <i class="fas fa-fw fa-check text-success"></i> <small>Saved</small>
+  </span>
+
+  <span *ngIf="status==='SAVING'">
+    <i class="fas fa-fw fa-spinner fa-spin"></i> <small>Saving...</small>
+  </span>
+
+
+  <span *ngIf="status==='INVALID'">
+    <i class="fas fa-fw fa-exclamation-triangle text-warning"></i> <small>Invalid</small>
+  </span>
+
+  <span *ngIf="status==='ERROR'">
+    <i class="fas fa-fw fa-exclamation-triangle text-danger"></i> <small>Firebase error</small>
+  </span>
+</small>
