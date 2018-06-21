@@ -1,20 +1,33 @@
 <div *ngIf="uid">
-  <div class="row align-items-center">
-    <div class="col-lg-6">
-      <div class="card mb-4">
-        <div class="card-header d-flex">
-          <h6 class="m-0">Minimal Demo</h6>
-        </div>
-        <div class="card-body">
-          <app-minimal [baseRef]="ref"></app-minimal>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="text-muted mb-4">
 
 
-      </div>
-    </div>
-  </div>
+  <section>
+    <h6>Minimal Demo</h6>
+    <ngx-strap-tabs>
+      <ng-template ngxStrapTab tabId="minimal-demo" tabTitle="Demo">
+        <div class="row align-items-center">
+          <div class="col-sm">
+            <app-minimal [baseRef]="ref"></app-minimal>
+          </div>
+          <div class="col-sm">
+            <p class="text-muted">
+              Works with both reactive and template-driven form controls.
+            </p>
+            <p class="text-muted">
+              Just add <code>[ngxFireControl]="ref"</code>
+              to the control's markup.
+            </p>
+
+          </div>
+        </div>
+      </ng-template>
+      <ng-template ngxStrapTab tabId="minimal-ts" tabTitle="TS">
+        <ngx-highlight-js lang="typescript" url="https://raw.githubusercontent.com/nowzoo/ngx-fire-control/master/src/app/minimal/minimal.component.ts"></ngx-highlight-js>
+      </ng-template>
+      <ng-template ngxStrapTab tabId="minimal-html" tabTitle="HTML">
+        <ngx-highlight-js lang="typescript" url="https://raw.githubusercontent.com/nowzoo/ngx-fire-control/master/src/app/minimal/minimal.component.html"></ngx-highlight-js>
+      </ng-template>
+    </ngx-strap-tabs>
+  </section>
+
 </div>

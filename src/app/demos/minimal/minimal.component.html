@@ -1,0 +1,34 @@
+
+<div class="form-group">
+  <label for="minimal-reactive-control">Name (using a <code>FormControl</code>)</label>
+  <app-firebase-control-status class="ml-3" [status$]="nameCtl.status$"></app-firebase-control-status>
+  <!-- reactive form control... -->
+  <input
+    id="minimal-reactive-control"
+    type="text"
+    class="form-control"
+    [formControl]="fc"
+    [ngxFireControl]="baseRef.child('name')"
+    #nameCtl="ngxFireControl">
+  <div class="invalid-feedback" style="display:block" *ngIf="fc.hasError('required') && fc.dirty">
+    Required.
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="nickname">Nickname (using <code>[(ngModel)]</code>)</label>
+  <app-firebase-control-status class="ml-3" [status$]="nicknameCtrl.status$"></app-firebase-control-status>
+  <!-- template form control... -->
+  <input
+    id="nickname"
+    type="text"
+    class="form-control"
+    [(ngModel)]="nickname"
+    [ngxFireControl]="baseRef.child('nickname')"
+    #nicknameCtrl="ngxFireControl"
+    #inp="ngModel"
+    required>
+  <div class="invalid-feedback" style="display:block" *ngIf="inp.hasError('required') && inp.dirty">
+    Required.
+  </div>
+</div>
