@@ -1,10 +1,10 @@
 
 <div class="form-group">
-  <label for="minimal-reactive-control">Name (using a <code>FormControl</code>)</label>
+  <label for="name">Name (using a <code>FormControl</code>)</label>
   <app-firebase-control-status class="ml-3" [status$]="nameCtl.status$"></app-firebase-control-status>
   <!-- reactive form control... -->
   <input
-    id="minimal-reactive-control"
+    id="name"
     type="text"
     class="form-control"
     [formControl]="fc"
